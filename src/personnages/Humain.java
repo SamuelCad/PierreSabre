@@ -27,7 +27,7 @@ public class Humain {
 	
 	
 	public void direBonjonr(){
-		 parler("Bonjour ! Je m’appelle " + nom + " et j’aime boire du "+ boissonFavorite);
+		 parler("Bonjour ! Je m'appelle " + nom + " et j'aime boire du "+ boissonFavorite+".");
 	}
 
 	public void boire(){
@@ -35,14 +35,13 @@ public class Humain {
 	}
 	
 	public void acheter(String bien, int prix){
-		direBonjonr();
-		parler("J'ai "+ argent + " sous en poche. Je vais pouvoir m'offrir une boisson à "+ prix + " sous");
+		parler("J'ai "+ argent + " sous en poche. Je vais pouvoir m'offrir une boisson Ã  "+ prix + " sous");
 		if (argent>=prix) {
 			argent-=prix;
 			boire();
 		}
 		else {
-			parler("Je n'ai plus que"+ argent + "sous en poche. Je ne peux même pas m'offrir un kimono à"+ prix + "sous");
+			parler("Je n'ai plus que "+ argent + " sous en poche. Je ne peux mÃªme pas m'offrir un kimono Ã  "+ prix + " sous");
 		}
 	}
 	
