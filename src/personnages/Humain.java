@@ -1,7 +1,7 @@
 package personnages;
 public class Humain {
 	
-	private String nom;
+	protected String nom;
 	private String boissonFavorite;
 	protected int argent;
 		
@@ -12,11 +12,11 @@ public class Humain {
 		this.boissonFavorite = boissonFavorite;
 		this.argent = argent;
 	}
-	
-		
+			
 	public String getNom() {
 		return nom;
 	}
+
 	public int getArgent() {
 		return argent;
 	}
@@ -24,7 +24,6 @@ public class Humain {
 	public void parler(String texte){
 		System.out.println("("+nom+")"+ " - " +texte);
 	}
-	
 	
 	public void direBonjour(){
 		 parler("Bonjour ! Je m'appelle " + nom + " et j'aime boire du "+ boissonFavorite+".");

@@ -3,7 +3,6 @@ public class Commerçant extends Humain{
 
 	public Commerçant(String nom, int argent) {
 		super(nom, "thé", argent);
-		
 	}
 	
 	public int seFaireExtorquer(){
@@ -12,6 +11,7 @@ public class Commerçant extends Humain{
 		argent=0;
 		return argentExtorquer;
 	}
+	
 	public void recevoir(int argentDonateur){
 			argent = argentDonateur;
 			parler(argent+ " sous ! Je te remercie généreux donateur!");
