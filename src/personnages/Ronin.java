@@ -29,7 +29,7 @@ public class Ronin extends Humain{
 		}
 	}
 	
-	public void donner(Commerçant bénéficiaire){
+	public void donner(Commercant bénéficiaire){
 		int argentDonner= (int) (argent*0.1);
 		argent-=argentDonner;
 		parler(bénéficiaire.getNom()+" prend ces "+ argentDonner +" sous.");

@@ -33,7 +33,7 @@ public class Yakuza extends Humain {
 		parler("Ce ronin pensait vraiment battre "+nom+" du clan de "+clan+" ? Je l'ai dépouillé de ses "+gain+" sous.");
 	}
 	
-	public void extorquer(Commerçant victime){
+	public void extorquer(Commercant victime){
 		parler("Tiens, tiens, ne serait-ce pas un faible marchand qui passe par là ?");
 		parler(victime.getNom()+" si tu tiens à la vie donne moi ta bourse !");
 		int argentVoler=victime.getArgent();

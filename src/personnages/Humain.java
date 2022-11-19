@@ -1,9 +1,14 @@
 package personnages;
+import java.util.Queue;
+
 public class Humain {
 	
 	protected String nom;
 	private String boissonFavorite;
 	protected int argent;
+	protected int nbConnaissance=0;
+	protected final int NBMAXCONNAISSANCE=3;
+	private String[] memoire= new String[NBMAXCONNAISSANCE];
 		
 	
 	public Humain(String nom, String boissonFavorite, int argent) {
@@ -20,7 +25,7 @@ public class Humain {
 	public int getArgent() {
 		return argent;
 	}
-
+	
 	public void parler(String texte){
 		System.out.println("("+nom+")"+ " - " +texte);
 	}
@@ -43,5 +48,51 @@ public class Humain {
 			parler("Je n'ai plus que "+ argent + " sous en poche. Je ne peux même pas m'offrir un kimono à "+ prix + " sous");
 		}
 	}
+	
+	public void faireConnaissace(Humain autreHumain) {
+		direBonjour();
+		autreHumain.repondre(this);
+		memoriserNom(autreHumain);
+		
+	}
+	public void repondre(Humain humain) {
+		direBonjour();
+		memoriserNom(humain);
+	}
+	
+	private void memoriserNom(Humain autreHumain) {
+		if (nbConnaissance<NBMAXCONNAISSANCE) {
+			memoire[nbConnaissance]=autreHumain.getNom();
+			nbConnaissance++;
+		}
+		else {
+			memoire[nbConnaissance%NBMAXCONNAISSANCE]=autreHumain.getNom();
+			nbConnaissance++;
+
+		}
+	}
+	
+	public void listerConnaissance() {
+		int lng;
+		if (nbConnaissance>NBMAXCONNAISSANCE) {
+			lng=NBMAXCONNAISSANCE;
+		}
+		else {
+			lng=nbConnaissance;
+		}
+			
+		String[] persConnu = new String[lng];
+		for (int i = 0; (i<NBMAXCONNAISSANCE) && (memoire[i]!=null); i++ ) {
+			persConnu[i]= memoire[i];
+		}
+		parler("Je connais beaucoup de monde dont : "+
+		String.join(", ",persConnu));
+
+	}
+	
+	
+	
+	
+	
 	
 }
