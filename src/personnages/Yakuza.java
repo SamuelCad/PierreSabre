@@ -42,4 +42,9 @@ public class Yakuza extends Humain {
 		parler("J’ai piqué les "+argentVoler+ " sous de Marco, ce qui me fait "+ argent + " sous dans ma poche. Hi ! Hi !");
 	}
 
+	@Override
+	public void direBonjour() {
+		super.direBonjour();
+		parler("Mon clan est celui de "+ clan);
+	}
 }

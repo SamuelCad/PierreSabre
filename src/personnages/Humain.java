@@ -35,6 +35,7 @@ public class Humain {
 		System.out.println("("+nom+")"+ " - " +texte);
 	}
 	
+	
 	public void direBonjour(){
 		 parler("Bonjour ! Je m'appelle " + nom + " et j'aime boire du "+ boissonFavorite+".");
 	}
@@ -44,13 +45,15 @@ public class Humain {
 	}
 	
 	public void acheter(String bien, int prix){
-		parler("J'ai "+ argent + " sous en poche. Je vais pouvoir m'offrir une boisson à "+ prix + " sous");
+		parler("J'ai "+ argent + " sous en poche. "
+				+ "Je vais pouvoir m'offrir une boisson à "+ prix + " sous");
 		if (argent>=prix) {
 			argent-=prix;
 			boire();
 		}
 		else {
-			parler("Je n'ai plus que "+ argent + " sous en poche. Je ne peux même pas m'offrir un kimono à "+ prix + " sous");
+			parler("Je n'ai plus que "+ argent + " sous en poche. "
+					+ "Je ne peux même pas m'offrir un kimono à "+ prix + " sous");
 		}
 	}
 	
@@ -64,41 +67,16 @@ public class Humain {
 		direBonjour();
 		memoriserNom(humain);
 	}
-	
-//	private void memoriserNom(Humain autreHumain) {
-//		if (nbConnaissance<NBMAXCONNAISSANCE) {
-//			memoire[nbConnaissance]=autreHumain.getNom();
-//			nbConnaissance++;
-//		}
-//		else {
-//			memoire[nbConnaissance%NBMAXCONNAISSANCE]=autreHumain.getNom();
-//			nbConnaissance++;
-//
-//		}
-//	}
+
 	private void memoriserNom(Humain autreHumain) {
-		
 		if (queue.size() != NBMAXCONNAISSANCE ) {
 			queue.add(autreHumain.getNom());
 		}
 		else {
-			queue.remove();
+			queue.remove(); 
 			queue.add(autreHumain.getNom());
 		}
 	}
-	
-//	public void listerConnaissance() {
-//		int lng;
-//		if (nbConnaissance>NBMAXCONNAISSANCE) {lng=NBMAXCONNAISSANCE;}
-//		else {lng=nbConnaissance;}
-//			
-//		String[] persConnu = new String[lng];
-//		for (int i = 0; (i<NBMAXCONNAISSANCE) && (memoire[i]!=null); i++ ) {
-//			persConnu[i]= memoire[i];
-//		}
-//		parler("Je connais beaucoup de monde dont : "+
-//		String.join(", ",persConnu));
-//	}
 	
 	public void listerConnaissance() {
 		parler("Je connais beaucoup de monde dont : "+
