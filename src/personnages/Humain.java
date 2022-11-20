@@ -1,5 +1,8 @@
 package personnages;
+import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
 
 public class Humain {
 	
@@ -8,7 +11,9 @@ public class Humain {
 	protected int argent;
 	protected int nbConnaissance=0;
 	protected final int NBMAXCONNAISSANCE=3;
-	private String[] memoire= new String[NBMAXCONNAISSANCE];
+//	private String[] memoire= new String[NBMAXCONNAISSANCE];
+	private Queue queue = new LinkedBlockingDeque<String>(NBMAXCONNAISSANCE);
+
 		
 	
 	public Humain(String nom, String boissonFavorite, int argent) {
@@ -60,36 +65,45 @@ public class Humain {
 		memoriserNom(humain);
 	}
 	
+//	private void memoriserNom(Humain autreHumain) {
+//		if (nbConnaissance<NBMAXCONNAISSANCE) {
+//			memoire[nbConnaissance]=autreHumain.getNom();
+//			nbConnaissance++;
+//		}
+//		else {
+//			memoire[nbConnaissance%NBMAXCONNAISSANCE]=autreHumain.getNom();
+//			nbConnaissance++;
+//
+//		}
+//	}
 	private void memoriserNom(Humain autreHumain) {
-		if (nbConnaissance<NBMAXCONNAISSANCE) {
-			memoire[nbConnaissance]=autreHumain.getNom();
-			nbConnaissance++;
+		
+		if (queue.size() != NBMAXCONNAISSANCE ) {
+			queue.add(autreHumain.getNom());
 		}
 		else {
-			memoire[nbConnaissance%NBMAXCONNAISSANCE]=autreHumain.getNom();
-			nbConnaissance++;
-
+			queue.remove();
+			queue.add(autreHumain.getNom());
 		}
 	}
+	
+//	public void listerConnaissance() {
+//		int lng;
+//		if (nbConnaissance>NBMAXCONNAISSANCE) {lng=NBMAXCONNAISSANCE;}
+//		else {lng=nbConnaissance;}
+//			
+//		String[] persConnu = new String[lng];
+//		for (int i = 0; (i<NBMAXCONNAISSANCE) && (memoire[i]!=null); i++ ) {
+//			persConnu[i]= memoire[i];
+//		}
+//		parler("Je connais beaucoup de monde dont : "+
+//		String.join(", ",persConnu));
+//	}
 	
 	public void listerConnaissance() {
-		int lng;
-		if (nbConnaissance>NBMAXCONNAISSANCE) {
-			lng=NBMAXCONNAISSANCE;
-		}
-		else {
-			lng=nbConnaissance;
-		}
-			
-		String[] persConnu = new String[lng];
-		for (int i = 0; (i<NBMAXCONNAISSANCE) && (memoire[i]!=null); i++ ) {
-			persConnu[i]= memoire[i];
-		}
 		parler("Je connais beaucoup de monde dont : "+
-		String.join(", ",persConnu));
-
+				String.join(", ",queue));
 	}
-	
 	
 	
 	
