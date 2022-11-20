@@ -1,7 +1,5 @@
 package personnages;
-import java.util.LinkedList;
 import java.util.Queue;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 
 public class Humain {
@@ -10,8 +8,7 @@ public class Humain {
 	private String boissonFavorite;
 	protected int argent;
 	protected int nbConnaissance=0;
-	protected final int NBMAXCONNAISSANCE=3;
-//	private String[] memoire= new String[NBMAXCONNAISSANCE];
+	protected final int NBMAXCONNAISSANCE=30;
 	private Queue queue = new LinkedBlockingDeque<String>(NBMAXCONNAISSANCE);
 
 		
